@@ -246,6 +246,7 @@ def asignarCandidato(id_candidato, id_partido):
 ####################################
 ##   ENDPOINTS DE RESULTADOS      ##
 ####################################
+# Resultados Generales
 @app.route("/resultados", methods=["GET"])
 def getResultados():
     headers = {"Content-Type": "application/json; charset=utf-8"}
@@ -254,6 +255,7 @@ def getResultados():
     Json = response.json()
     return jsonify(Json)
 
+#Crear un voto
 @app.route("/resultados/mesa/<string:id_mesa>/candidato/<string:id_candidato>", methods =["POST"])
 def crearResultado(id_mesa, id_candidato):
     data = {}
@@ -263,7 +265,7 @@ def crearResultado(id_mesa, id_candidato):
     Json = response.json()
     return jsonify(Json)
 
-
+#Ver un voto por Id
 @app.route("/resultados/<string:id>", methods=["GET"])
 def getResultado(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
@@ -272,6 +274,7 @@ def getResultado(id):
     Json = response.json()
     return jsonify(Json)
 
+#Actualizar un Voto
 @app.route("/resultados/<string:id_resultado>/mesa/<string:id_mesa>/candidato/<string:id_candidato>", methods=["PUT"])
 def modificarResultado(id_resultado, id_mesa, id_candidato):
     headers = {"Content-Type": "application/json; charset=utf-8"}
@@ -280,6 +283,7 @@ def modificarResultado(id_resultado, id_mesa, id_candidato):
     Json = response.json()
     return jsonify(Json)
 
+#Borrar un voto
 @app.route("/resultados/<string:id>", methods=["DELETE"])
 def deleteResultado(id):
     headers = {"Content-Type": "application/json; charset=utf-8"}
